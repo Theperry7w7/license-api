@@ -1,29 +1,23 @@
 export default function handler(req, res) {
-  const { placeId, ownerId, key } = req.query;
+  const { placeId, key } = req.query;
 
   const MASTER_KEY = process.env.MASTER_KEY;
 
-  if (!placeId || !ownerId || !key) {
-    return res.status(400).json({ authorized: false });
-  }
-
-  if (!MASTER_KEY || key !== MASTER_KEY) {
+  if (!placeId || !key || key !== MASTER_KEY) {
     return res.json({ authorized: false });
   }
 
+  // 🔐 LICENCIAS DEFINITIVAS
   const LICENSES = [
     {
-      placeId: "75014134442384",
-      ownerId: "8164725133",
+      placeId: "75014134442384", // juego autorizado
       enabled: true
     }
   ];
 
-  const licenseValid = LICENSES.some(lic =>
-    lic.enabled &&
-    lic.placeId === placeId &&
-    lic.ownerId === ownerId
+  const allowed = LICENSES.some(
+    lic => lic.enabled && lic.placeId === placeId
   );
 
-  return res.json({ authorized: licenseValid });
+  return res.json({ authorized: allowed });
 }
