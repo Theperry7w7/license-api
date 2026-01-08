@@ -17,7 +17,7 @@ export default function handler(req, res) {
   const LICENSES = [
     {
       placeId: "75014134442384", // TU placeId REAL
-      enabled: true
+      enabled: false
     }
 
     // 👉 aquí agregas más clientes
