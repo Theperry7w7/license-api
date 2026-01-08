@@ -18,10 +18,15 @@ export default function handler(req, res) {
     {
       placeId: "75014134442384", // TU placeId REAL
       enabled: true
-    }
-
-    // 👉 aquí agregas más clientes
-    // { placeId: "123456789", enabled: true }
+      },
+    {
+      placeId: "106677173608616", // TU placeId REAL
+      enabled: true
+  },
+     {
+      placeId: "103616014605849", // TU placeId REAL
+      enabled: true
+}
   ];
 
   // 4. Verificación
